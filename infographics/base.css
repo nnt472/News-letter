@@ -1,0 +1,48 @@
+:root{
+  --phs-green-900:#085a2a; --phs-green-800:#0e6a34; --phs-green-700:#12773b; --phs-green-600:#188a46;
+  --phs-green-100:#e6f4ec; --phs-gold:#f2bf4a; --ink:#0f172a; --page:#f4f7fa; --card:#ffffff;
+}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--page);color:var(--ink);
+  font-family: Inter, ui-sans-serif, system-ui, Segoe UI, Roboto, Arial, sans-serif}
+.container{max-width:1140px;margin:auto;padding:28px}
+
+/* Hero */
+.hero{
+  background:
+    radial-gradient(1000px 420px at 90% -10%, rgba(24,138,70,.20), transparent 60%),
+    linear-gradient(135deg, var(--phs-green-900), var(--phs-green-700) 55%, var(--phs-green-600));
+  border-radius:22px;color:#eaf4ee;padding:28px 28px 24px;
+  box-shadow:0 14px 36px rgba(10,80,40,.28);
+}
+.hero h1{margin:6px 0 6px;font-size:34px;line-height:1.15;font-weight:800}
+.chips{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px}
+.chip{display:inline-flex;align-items:center;gap:.45rem;background:rgba(255,255,255,.14);
+  border:1px solid rgba(255,255,255,.22);color:#fff;padding:.28rem .6rem;border-radius:999px;font-weight:600;
+  font-size:.8rem;backdrop-filter:blur(3px)}
+
+/* Sections */
+.section{background:var(--card);border-radius:18px;box-shadow:0 10px 28px rgba(2,8,23,.06);padding:22px 22px;margin-top:22px}
+.title{text-transform:uppercase;font-weight:800;color:var(--phs-green-800);letter-spacing:.05em;margin:0 0 1rem;position:relative;padding-left:8px}
+.title:before{content:"";position:absolute;left:0;top:.35rem;width:4px;height:1.1rem;background:linear-gradient(var(--phs-gold),#ffe4a3);border-radius:6px}
+.subcard{background:#fbfefe;border:1px solid #d8eadd;border-radius:14px;padding:14px}
+.subcard h3{margin:.1rem 0 .55rem;color:var(--phs-green-800);font-weight:700}
+.tint{background:var(--phs-green-100);border-radius:14px;padding:14px}
+.badge{display:inline-block;background:linear-gradient(135deg,var(--phs-green-800),var(--phs-green-600));color:#fff;padding:.28rem .6rem;border-radius:.6rem;font-size:.75rem;font-weight:700;letter-spacing:.02em}
+.muted{color:#475569}
+ul{padding-left:1.2rem} li{line-height:1.6}
+
+/* Flow diagram */
+.flow-grid{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:.5rem;align-items:center}
+.flow-node{background:var(--phs-green-100);border:2px solid #cce8d7;border-radius:14px;padding:.8rem;text-align:center;font-size:.9rem}
+.flow-arrow{color:#8aa0b7;text-align:center;font-size:22px}
+@media(max-width:900px){.flow-grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
+
+footer.note{color:#64748b;text-align:center;font-size:.9rem;margin:28px 0}
+
+/* Print */
+@media print{
+  body{background:#fff;color:#111}
+  .hero{box-shadow:none}
+  .section{box-shadow:none;border:1px solid #e5e7eb}
+}
