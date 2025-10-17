@@ -4,40 +4,40 @@ const $$ = (sel, root=document) => Array.from(root.querySelectorAll(sel));
 const setYear = () => { const y = $("#year"); if (y) y.textContent = new Date().getFullYear(); };
 const getQuery = (k) => new URLSearchParams(location.search).get(k);
 
+const DEFAULT_START_MONTH = "2025-09"; // bắt đầu hiển thị từ 09/2025
+
 /* ===== i18n ===== */
 const i18n = (() => {
   const dict = {
-    en: {
-      weekly: "Weekly News", monthly: "Monthly Summary", analysis: "Legal Analysis",
-      subscribeTitle: "Subscribe", subscribeDesc: "Leave your email. We’ll notify you when new updates are posted.",
-      subscribeBtn: "Notify me", contact: "Contact: legal@phs.vn",
-      readMore: "Read more", downloadPdf: "Download PDF", backHome: "Back to Home",
-      thanks: "Thanks! We will keep you posted.",
-      allTypes: "All types", allMonths: "All months", searchPH: "Search title, summary…"
+    en:{
+      weekly:"Weekly News", monthly:"Monthly Summary", analysis:"Legal Analysis",
+      subscribeTitle:"Subscribe for updates",
+      subscribeDesc:"Leave your email to get notified when new updates are published.",
+      subscribeBtn:"Notify me", contact:"Contact: legal@phs.vn",
+      readMore:"Read more", downloadPdf:"Download PDF", backHome:"Back to Home",
+      thanks:"Thanks! We will keep you posted.",
+      allTypes:"All types", allMonths:"All months", searchPH:"Search title, summary…"
     },
-    vi: {
-      weekly: "Bản tin hàng tuần", monthly: "Tổng hợp hàng tháng", analysis: "Phân tích pháp lý",
-      subscribeTitle: "Đăng ký nhận tin", subscribeDesc: "Để lại email, chúng tôi sẽ thông báo khi có cập nhật mới.",
-      subscribeBtn: "Thông báo cho tôi", contact: "Liên hệ: legal@phs.vn",
-      readMore: "Xem chi tiết", downloadPdf: "Tải PDF", backHome: "Về trang chủ",
-      thanks: "Cảm ơn! Chúng tôi sẽ thông báo khi có cập nhật.",
-      allTypes: "Tất cả loại", allMonths: "Tất cả tháng", searchPH: "Tìm tiêu đề, tóm tắt…"
+    vi:{
+      weekly:"Bản tin hàng tuần", monthly:"Tổng hợp hàng tháng", analysis:"Phân tích pháp lý",
+      subscribeTitle:"Đăng ký nhận tin",
+      subscribeDesc:"Để lại email để nhận thông báo khi có cập nhật mới.",
+      subscribeBtn:"Thông báo cho tôi", contact:"Liên hệ: legal@phs.vn",
+      readMore:"Xem chi tiết", downloadPdf:"Tải PDF", backHome:"Về trang chủ",
+      thanks:"Cảm ơn! Chúng tôi sẽ thông báo khi có cập nhật.",
+      allTypes:"Tất cả loại", allMonths:"Tất cả tháng", searchPH:"Tìm tiêu đề, tóm tắt…"
     }
   };
-  let lang = localStorage.getItem("lang") || "en";
-  const t = (k) => dict[lang][k] || k;
-  const set = (l) => { lang = l; localStorage.setItem("lang", l); translate(); };
-  const translate = () => {
-    $$("[data-i18n]").forEach(el => el.textContent = t(el.dataset.i18n));
-    const s = $("#searchInput"); if (s) s.placeholder = t("searchPH");
-    const typeSel = $("#typeFilter"); if (typeSel) {
-      typeSel.options[0].textContent = t("allTypes");
-    }
-    const monthSel = $("#monthFilter"); if (monthSel) {
-      monthSel.options[0].textContent = t("allMonths");
-    }
+  let lang = localStorage.getItem("lang") || "vi";
+  const t=(k)=>dict[lang][k]||k;
+  const set=(l)=>{lang=l;localStorage.setItem("lang",l);translate();};
+  const translate=()=>{
+    $$("[data-i18n]").forEach(el=>el.textContent=t(el.dataset.i18n));
+    const s=$("#searchInput"); if(s) s.placeholder=t("searchPH");
+    const typeSel=$("#typeFilter"); if(typeSel) typeSel.options[0].textContent=t("allTypes");
+    const monthSel=$("#monthFilter"); if(monthSel) monthSel.options[0].textContent=t("allMonths");
   };
-  return { t, set, get:()=>lang, translate };
+  return {t,set,get:()=>lang,translate};
 })();
 
 /* ===== Dark mode ===== */
@@ -51,7 +51,7 @@ const i18n = (() => {
   });
 })();
 
-/* ===== Language toggle buttons ===== */
+/* ===== Language toggle ===== */
 (function initLang(){
   $$(".lang-switch button").forEach(b=>{
     if (b.dataset.lang === i18n.get()) b.classList.add("active");
@@ -59,7 +59,7 @@ const i18n = (() => {
       $$(".lang-switch button").forEach(x=>x.classList.remove("active"));
       b.classList.add("active");
       i18n.set(b.dataset.lang);
-      renderAll(); // re-render lists or post content
+      renderAll();
     });
   });
 })();
@@ -77,13 +77,19 @@ async function loadPosts(){
 
 /* ===== Month options ===== */
 function setupMonths(posts){
-  const sel = $("#monthFilter"); if (!sel) return;
-  const months = new Set(posts.map(p => p.date.slice(0,7))); // YYYY-MM
+  const sel=$("#monthFilter"); if(!sel) return;
+  sel.innerHTML = "";
+  const allOpt=document.createElement("option");
+  allOpt.value="all"; allOpt.textContent=i18n.t("allMonths");
+  sel.appendChild(allOpt);
+
+  const months = new Set(posts.map(p=>p.date.slice(0,7)).filter(m => m >= DEFAULT_START_MONTH));
   [...months].sort().reverse().forEach(m=>{
-    const opt = document.createElement("option");
-    opt.value = m; opt.textContent = m;
+    const opt=document.createElement("option");
+    opt.value=m; opt.textContent=m;
     sel.appendChild(opt);
   });
+  if ([...months].includes(DEFAULT_START_MONTH)) sel.value = DEFAULT_START_MONTH;
 }
 
 /* ===== Card rendering ===== */
@@ -96,17 +102,18 @@ function card(p){
     <div class="meta">${p.type.toUpperCase()} · ${p.date}</div>
     <h3>${postTitle(p)}</h3>
     <p>${postSummary(p)}</p>
-    <div class="tags">${p.tags.map(t=>`<span class="tag">${t}</span>`).join("")}</div>
+    <div class="tags">${(p.tags||[]).map(t=>`<span class="tag">${t}</span>`).join("")}</div>
     <a class="btn readmore" href="post.html?id=${encodeURIComponent(p.id)}" data-i18n="readMore">${i18n.t("readMore")}</a>
   `;
   return div;
 }
 
-/* ===== Index page logic ===== */
+/* ===== Home ===== */
 async function renderHome(){
-  const weekly = $("#weeklyList"); if (!weekly) return; // not on home
+  const weekly = $("#weeklyList"); if (!weekly) return;
   const posts = await loadPosts();
   setupMonths(posts);
+
   const monthSel = $("#monthFilter");
   const typeSel = $("#typeFilter");
   const search = $("#searchInput");
@@ -138,7 +145,7 @@ async function renderHome(){
   renderLists();
 }
 
-/* ===== Simple Markdown (headings, bold, italics, link) ===== */
+/* ===== Tiny Markdown ===== */
 function miniMarkdown(md=""){
   return md
     .replace(/^### (.*$)/gim, "<h3>$1</h3>")
@@ -150,7 +157,7 @@ function miniMarkdown(md=""){
     .replace(/\n$/gim, "<br/>");
 }
 
-/* ===== Post page logic ===== */
+/* ===== Post ===== */
 async function renderPost(){
   const el = $("#post"); if (!el) return;
   const id = getQuery("id");
@@ -170,18 +177,12 @@ async function renderPost(){
       <a class="btn secondary" href="./" data-i18n="backHome">${i18n.t("backHome")}</a>
     </div>
     <p><em>${summary}</em></p>
-    <div class="tags">${p.tags.map(t=>`<span class="tag">${t}</span>`).join("")}</div>
+    <div class="tags">${(p.tags||[]).map(t=>`<span class="tag">${t}</span>`).join("")}</div>
     <hr/>
     <div class="content">${miniMarkdown(body)}</div>
   `;
 }
 
-/* ===== Re-render on language change ===== */
-function renderAll(){
-  i18n.translate();
-  renderHome();
-  renderPost();
-}
-
-/* ===== Boot ===== */
+/* ===== Re-render ===== */
+function renderAll(){ i18n.translate(); renderHome(); renderPost(); }
 document.addEventListener("DOMContentLoaded", renderAll);

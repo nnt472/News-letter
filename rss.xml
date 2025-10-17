@@ -3,18 +3,8 @@
   <channel>
     <title>PHS Legal Updates</title>
     <link>https://ntt472.github.io/News-letter/</link>
-    <description>Weekly and monthly legal updates for PHS BOM.</description>
-    <item>
-      <title>Monthly Digest – September 2025</title>
-      <link>https://ntt472.github.io/News-letter/post.html?id=201</link>
-      <pubDate>Tue, 30 Sep 2025 00:00:00 +0700</pubDate>
-      <guid>201</guid>
-    </item>
-    <item>
-      <title>SSC issues guidance on eKYC standards</title>
-      <link>https://ntt472.github.io/News-letter/post.html?id=101</link>
-      <pubDate>Sun, 12 Oct 2025 00:00:00 +0700</pubDate>
-      <guid>101</guid>
-    </item>
+    <description>Legal updates for PHS BOM.</description>
+    <item><title>Monthly Digest – Sep 2025</title><link>https://ntt472.github.io/News-letter/post.html?id=900</link><pubDate>Tue, 30 Sep 2025 00:00:00 +0700</pubDate><guid>900</guid></item>
+    <item><title>W2 Oct: Tax data standardization (TT94)</title><link>https://ntt472.github.io/News-letter/post.html?id=911</link><pubDate>Tue, 14 Oct 2025 00:00:00 +0700</pubDate><guid>911</guid></item>
   </channel>
 </rss>
