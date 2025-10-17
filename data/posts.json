@@ -91,4 +91,17 @@
     "content_en": "### Immediate actions\n- HR: collect **Personal Identification Numbers** for 100% staff records.\n- Accounting: update e-forms with vendor; ensure accurate PIT and withholding.\n- Control environment: refresh high-risk process controls (IB, brokerage, prop).",
     "content_vi": "### Hành động ngay\n- HR: thu thập **Số định danh cá nhân** cho **100%** hồ sơ.\n- Kế toán: cập nhật biểu mẫu điện tử với nhà cung cấp; đảm bảo quyết toán TNCN/khấu trừ chính xác.\n- Kiểm soát nội bộ: siết kiểm soát ở các mảng rủi ro cao (IB, môi giới, tự doanh)."
   }
+  {
+  "id": 960,
+  "type": "analysis",
+  "date": "2025-10-09",
+  "title_en": "P2P Lending – Vietnam Sandbox Briefing (Infographic)",
+  "title_vi": "P2P Lending – Tóm tắt Sandbox Việt Nam (Infographic)",
+  "summary_en": "Executive visual brief: model, requirements, cybersecurity, global lessons.",
+  "summary_vi": "Infographic: mô hình, yêu cầu, an ninh mạng, bài học quốc tế.",
+  "tags": ["P2P","sandbox","fintech"],
+  "author": "PHS Legal",
+  "keywords": "p2p lending, sandbox, sbv, cybersecurity, escrow, KPI, consumer protection",
+  "content_url": "infographics/p2p-2025-10.html"
+}
 ]
