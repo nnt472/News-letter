@@ -1,17 +1,79 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>News-letter</title>
-  <style>
-    body { font-family: Arial, sans-serif; margin: 40px; background: #f7f8fa; }
-    h1 { color: #0050b3; }
-    p { font-size: 18px; color: #333; }
-  </style>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>PHS Legal Updates</title>
+  <meta name="description" content="Weekly and monthly legal updates for PHS Board of Management."/>
+  <meta property="og:title" content="PHS Legal Updates"/>
+  <meta property="og:description" content="Weekly and monthly legal updates for PHS Board of Management."/>
+  <link rel="icon" href="assets/logo-phs.svg"/>
+  <link rel="stylesheet" href="styles.css"/>
 </head>
 <body>
-  <h1>Welcome to My Newsletter</h1>
-  <p>This is my first GitHub Pages website built using Codespaces & Codex.</p>
+  <header class="site-header">
+    <a class="brand" href="./">
+      <img src="assets/logo-phs.svg" alt="PHS logo"/>
+      <span>PHS Legal Updates</span>
+    </a>
+
+    <div class="header-actions">
+      <button id="darkToggle" aria-label="Toggle dark mode">🌙</button>
+      <div class="lang-switch">
+        <button data-lang="en" class="active">EN</button>
+        <button data-lang="vi">VI</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="controls">
+      <input id="searchInput" type="search" placeholder="Search title, summary…" aria-label="Search"/>
+      <select id="typeFilter" aria-label="Filter by type">
+        <option value="all">All types</option>
+        <option value="weekly">Weekly</option>
+        <option value="monthly">Monthly</option>
+        <option value="analysis">Analysis</option>
+      </select>
+      <select id="monthFilter" aria-label="Filter by month">
+        <option value="all">All months</option>
+      </select>
+    </section>
+
+    <section>
+      <h2 class="section-title" data-i18n="weekly">Weekly News</h2>
+      <div id="weeklyList" class="grid"></div>
+    </section>
+
+    <section>
+      <h2 class="section-title" data-i18n="monthly">Monthly Summary</h2>
+      <div id="monthlyList" class="grid"></div>
+    </section>
+
+    <section>
+      <h2 class="section-title" data-i18n="analysis">Legal Analysis</h2>
+      <div id="analysisList" class="grid"></div>
+    </section>
+
+    <section class="subscribe">
+      <h3 data-i18n="subscribeTitle">Subscribe</h3>
+      <p data-i18n="subscribeDesc">Leave your email. We’ll notify you when new updates are posted.</p>
+      <form onsubmit="event.preventDefault(); alert(i18n.t('thanks')); this.reset();">
+        <input type="email" required placeholder="your@email.com" aria-label="Email"/>
+        <button type="submit" class="btn" data-i18n="subscribeBtn">Notify me</button>
+      </form>
+      <p class="contact" data-i18n="contact">Contact: legal@phs.vn</p>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <span>© <span id="year"></span> Phu Hung Securities – Legal Division</span>
+    <nav>
+      <a href="rss.xml" target="_blank" rel="noopener">RSS</a>
+      <a href="sitemap.xml" target="_blank" rel="noopener">Sitemap</a>
+    </nav>
+  </footer>
+
+  <script src="app.js"></script>
 </body>
 </html>

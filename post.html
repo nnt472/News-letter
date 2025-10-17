@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Post • PHS Legal Updates</title>
+  <link rel="icon" href="assets/logo-phs.svg"/>
+  <link rel="stylesheet" href="styles.css"/>
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="./">
+      <img src="assets/logo-phs.svg" alt="PHS logo"/>
+      <span>PHS Legal Updates</span>
+    </a>
+
+    <div class="header-actions">
+      <button id="darkToggle" aria-label="Toggle dark mode">🌙</button>
+      <div class="lang-switch">
+        <button data-lang="en" class="active">EN</button>
+        <button data-lang="vi">VI</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <article id="post" class="post"></article>
+    <div class="backline">
+      <a class="btn" href="./" data-i18n="backHome">← Back to Home</a>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <span>© <span id="year"></span> Phu Hung Securities – Legal Division</span>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>

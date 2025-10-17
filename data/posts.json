@@ -1,0 +1,103 @@
+[
+  {
+    "id": 101,
+    "type": "weekly",
+    "date": "2025-10-12",
+    "title_en": "SSC issues guidance on eKYC standards",
+    "title_vi": "SSC ban hành hướng dẫn về chuẩn eKYC",
+    "summary_en": "Key points of the draft circular to replace Circular 134/2017.",
+    "summary_vi": "Các điểm chính của dự thảo thông tư thay thế Thông tư 134/2017.",
+    "tags": ["SSC", "eKYC", "draft"],
+    "author": "PHS Legal",
+    "content_en": "# Highlights\n- New data verification flow\n- Cross-check with VSDC\n- Implementation timeline: Q1/2026",
+    "content_vi": "# Điểm nổi bật\n- Luồng xác thực dữ liệu mới\n- Đối soát với VSDC\n- Lộ trình triển khai: Q1/2026"
+  },
+  {
+    "id": 102,
+    "type": "weekly",
+    "date": "2025-10-05",
+    "title_en": "VSDC publishes fund information portal plan",
+    "title_vi": "VSDC công bố kế hoạch cổng thông tin quỹ",
+    "summary_en": "Public NAV disclosure and APIs for distributors.",
+    "summary_vi": "Công khai NAV và API cho đại lý phân phối.",
+    "tags": ["VSDC", "fund", "disclosure"],
+    "author": "PHS Legal",
+    "content_en": "## Scope\n**NAV**, portfolio composition, and fees will be disclosed.",
+    "content_vi": "## Phạm vi\nSẽ công khai **NAV**, cơ cấu danh mục và phí."
+  },
+  {
+    "id": 103,
+    "type": "weekly",
+    "date": "2025-09-28",
+    "title_en": "Draft amendment of Decree 155/2020",
+    "title_vi": "Sửa đổi Nghị định 155/2020 (dự thảo)",
+    "summary_en": "Administrative penalties revised; market transparency focus.",
+    "summary_vi": "Điều chỉnh xử phạt; tập trung minh bạch thị trường.",
+    "tags": ["Decree 155", "penalty"]
+  },
+  {
+    "id": 201,
+    "type": "monthly",
+    "date": "2025-09-30",
+    "title_en": "Monthly Digest – September 2025",
+    "title_vi": "Tổng hợp tháng 09/2025",
+    "summary_en": "Top 10 regulatory moves impacting brokers.",
+    "summary_vi": "Top 10 thay đổi pháp lý ảnh hưởng CTCK.",
+    "tags": ["digest", "summary"],
+    "content_en": "### Items\n1. …\n2. …",
+    "content_vi": "### Mục\n1. …\n2. …",
+    "pdf_url": "https://example.com/files/sept-2025-digest.pdf"
+  },
+  {
+    "id": 202,
+    "type": "monthly",
+    "date": "2025-08-31",
+    "title_en": "Monthly Digest – August 2025",
+    "title_vi": "Tổng hợp tháng 08/2025",
+    "summary_en": "KYC updates, fund distribution pipeline, and tax notes.",
+    "summary_vi": "Cập nhật KYC, đường ống phân phối quỹ, ghi chú thuế.",
+    "tags": ["digest"]
+  },
+  {
+    "id": 203,
+    "type": "monthly",
+    "date": "2025-07-31",
+    "title_en": "Monthly Digest – July 2025",
+    "title_vi": "Tổng hợp tháng 07/2025",
+    "summary_en": "Highlights on listing rules and bond market.",
+    "summary_vi": "Điểm nhấn về quy tắc niêm yết và thị trường trái phiếu.",
+    "tags": ["digest", "listing"]
+  },
+  {
+    "id": 301,
+    "type": "analysis",
+    "date": "2025-09-18",
+    "title_en": "Sub-account vs Feature design for periodic investment",
+    "title_vi": "Thiết kế tiểu khoản vs tính năng cho đầu tư định kỳ",
+    "summary_en": "Compliance and UX trade-offs for DCA implementations.",
+    "summary_vi": "Đánh đổi tuân thủ & UX trong triển khai DCA.",
+    "tags": ["DCA", "product", "compliance"],
+    "content_en": "### Overview\nWe compare **independent sub-accounts** with **feature add-in**.",
+    "content_vi": "### Tổng quan\nSo sánh **tiểu khoản độc lập** và **tính năng gắn thêm**."
+  },
+  {
+    "id": 302,
+    "type": "analysis",
+    "date": "2025-08-20",
+    "title_en": "eKYC readiness checklist for brokers",
+    "title_vi": "Checklist sẵn sàng eKYC cho CTCK",
+    "summary_en": "Process, risk, and data governance items.",
+    "summary_vi": "Quy trình, rủi ro và quản trị dữ liệu.",
+    "tags": ["eKYC", "governance"]
+  },
+  {
+    "id": 104,
+    "type": "weekly",
+    "date": "2025-10-13",
+    "title_en": "HNX bond registration updates",
+    "title_vi": "Cập nhật đăng ký trái phiếu tại HNX",
+    "summary_en": "Clarifies listing vs trading registration.",
+    "summary_vi": "Làm rõ niêm yết so với đăng ký giao dịch.",
+    "tags": ["HNX", "bond"]
+  }
+]
