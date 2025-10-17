@@ -5,39 +5,37 @@ const setYear = () => { const y = $("#year"); if (y) y.textContent = new Date().
 const getQuery = (k) => new URLSearchParams(location.search).get(k);
 
 /* ===== i18n ===== */
-const i18n = (() => {
+coconst i18n = (() => {
   const dict = {
-    en: {
-      weekly: "Weekly News", monthly: "Monthly Summary", analysis: "Legal Analysis",
-      subscribeTitle: "Subscribe", subscribeDesc: "Leave your email. We’ll notify you when new updates are posted.",
-      subscribeBtn: "Notify me", contact: "Contact: legal@phs.vn",
-      readMore: "Read more", downloadPdf: "Download PDF", backHome: "Back to Home",
-      thanks: "Thanks! We will keep you posted.",
-      allTypes: "All types", allMonths: "All months", searchPH: "Search title, summary…"
+    en:{
+      weekly:"Weekly News", monthly:"Monthly Summary", analysis:"Legal Analysis",
+      subscribeTitle:"Subscribe for updates",
+      subscribeDesc:"Leave your email to get notified when new updates are published.",
+      subscribeBtn:"Notify me", contact:"Contact: legal@phs.vn",
+      readMore:"Read more", downloadPdf:"Download PDF", backHome:"Back to Home",
+      thanks:"Thanks! We will keep you posted.",
+      allTypes:"All types", allMonths:"All months", searchPH:"Search title, summary…"
     },
-    vi: {
-      weekly: "Bản tin hàng tuần", monthly: "Tổng hợp hàng tháng", analysis: "Phân tích pháp lý",
-      subscribeTitle: "Đăng ký nhận tin", subscribeDesc: "Để lại email, chúng tôi sẽ thông báo khi có cập nhật mới.",
-      subscribeBtn: "Thông báo cho tôi", contact: "Liên hệ: legal@phs.vn",
-      readMore: "Xem chi tiết", downloadPdf: "Tải PDF", backHome: "Về trang chủ",
-      thanks: "Cảm ơn! Chúng tôi sẽ thông báo khi có cập nhật.",
-      allTypes: "Tất cả loại", allMonths: "Tất cả tháng", searchPH: "Tìm tiêu đề, tóm tắt…"
+    vi:{
+      weekly:"Bản tin hàng tuần", monthly:"Tổng hợp hàng tháng", analysis:"Phân tích pháp lý",
+      subscribeTitle:"Đăng ký nhận tin",
+      subscribeDesc:"Để lại email để nhận thông báo khi có cập nhật mới.",
+      subscribeBtn:"Thông báo cho tôi", contact:"Liên hệ: legal@phs.vn",
+      readMore:"Xem chi tiết", downloadPdf:"Tải PDF", backHome:"Về trang chủ",
+      thanks:"Cảm ơn! Chúng tôi sẽ thông báo khi có cập nhật.",
+      allTypes:"Tất cả loại", allMonths:"Tất cả tháng", searchPH:"Tìm tiêu đề, tóm tắt…"
     }
   };
   let lang = localStorage.getItem("lang") || "en";
-  const t = (k) => dict[lang][k] || k;
-  const set = (l) => { lang = l; localStorage.setItem("lang", l); translate(); };
-  const translate = () => {
-    $$("[data-i18n]").forEach(el => el.textContent = t(el.dataset.i18n));
-    const s = $("#searchInput"); if (s) s.placeholder = t("searchPH");
-    const typeSel = $("#typeFilter"); if (typeSel) {
-      typeSel.options[0].textContent = t("allTypes");
-    }
-    const monthSel = $("#monthFilter"); if (monthSel) {
-      monthSel.options[0].textContent = t("allMonths");
-    }
+  const t=(k)=>dict[lang][k]||k;
+  const set=(l)=>{lang=l;localStorage.setItem("lang",l);translate();};
+  const translate=()=>{
+    document.querySelectorAll("[data-i18n]").forEach(el=>el.textContent=t(el.dataset.i18n));
+    const s=$("#searchInput"); if(s) s.placeholder=t("searchPH");
+    const typeSel=$("#typeFilter"); if(typeSel) typeSel.options[0].textContent=t("allTypes");
+    const monthSel=$("#monthFilter"); if(monthSel) monthSel.options[0].textContent=t("allMonths");
   };
-  return { t, set, get:()=>lang, translate };
+  return {t,set,get:()=>lang,translate};
 })();
 
 /* ===== Dark mode ===== */
