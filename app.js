@@ -4,7 +4,7 @@ const $$ = (sel, root = document) => Array.from(root.querySelectorAll(sel));
 const setYear = () => { const y = $("#year"); if (y) y.textContent = new Date().getFullYear(); };
 const getQuery = (k) => new URLSearchParams(location.search).get(k);
 
-const DEFAULT_START_MONTH = "2025-09"; // bắt đầu hiển thị từ 09/2025
+const DEFAULT_START_MONTH = "2025-09";
 
 /* ===== i18n ===== */
 const i18n = (() => {
@@ -91,14 +91,16 @@ function setupMonths(posts){
     opt.value = m; opt.textContent = m;
     sel.appendChild(opt);
   });
-  if ([...months].includes(DEFAULT_START_MONTH)) sel.value = DEFAULT_START_MONTH;
+
+  // ✅ chỉnh: mặc định hiển thị tất cả tháng để không lọc mất bài mới như P2P
+  sel.value = "all";
 }
 
 /* ===== Helpers for rendering ===== */
 function postTitle(p){ return i18n.get() === "en" ? (p.title_en || p.title_vi || "") : (p.title_vi || p.title_en || ""); }
 function postSummary(p){ return i18n.get() === "en" ? (p.summary_en || p.summary_vi || "") : (p.summary_vi || p.summary_en || ""); }
 
-/* Card: ưu tiên content_url (Hybrid) */
+/* ===== Card rendering (ưu tiên content_url) ===== */
 function card(p){
   const href = p.content_url ? p.content_url : `post.html?id=${encodeURIComponent(p.id)}`;
   const div = document.createElement("div");
@@ -113,9 +115,9 @@ function card(p){
   return div;
 }
 
-/* ===== Home ===== */
+/* ===== Home page ===== */
 async function renderHome(){
-  const weekly = $("#weeklyList"); if (!weekly) return; // không phải trang home
+  const weekly = $("#weeklyList"); if (!weekly) return;
   const posts = await loadPosts();
   setupMonths(posts);
 
@@ -156,7 +158,7 @@ async function renderHome(){
   renderLists();
 }
 
-/* ===== Tiny Markdown (for classic posts) ===== */
+/* ===== Tiny Markdown ===== */
 function miniMarkdown(md = ""){
   return md
     .replace(/^### (.*)$/gim, "<h3>$1</h3>")
@@ -168,9 +170,9 @@ function miniMarkdown(md = ""){
     .replace(/\n/g, "<br/>");
 }
 
-/* ===== Post (classic post.html?id=...) ===== */
+/* ===== Post (classic) ===== */
 async function renderPost(){
-  const el = $("#post"); if (!el) return; // không phải trang post.html
+  const el = $("#post"); if (!el) return;
   const id = getQuery("id");
   const posts = await loadPosts();
   const p = posts.find(x => String(x.id) === String(id));
